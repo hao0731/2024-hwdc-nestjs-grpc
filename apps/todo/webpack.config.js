@@ -12,7 +12,14 @@ module.exports = {
       compiler: 'tsc',
       main: './src/main.ts',
       tsConfig: './tsconfig.app.json',
-      assets: ["./src/assets"],
+      assets: [
+        "./src/assets",
+        {
+          "input": join(__dirname, '../../libs/todo/domain/src/assets'),
+          "glob": "*.proto",
+          "output": "./assets/proto"
+        }
+      ],
       optimization: false,
       outputHashing: 'none',
     })
