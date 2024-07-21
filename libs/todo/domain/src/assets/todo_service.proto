@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+import "todo.proto";
+
+package todo.service;
+
+message GetTodoRequest {
+  string id = 1;
+}
+
+message GetTodoResponse {
+  todo.definition.Todo todo = 1;
+}
+
+message GetTodosRequest {
+  repeated string ids = 1;
+}
+
+message GetTodosResponse {
+  repeated todo.definition.Todo todos = 1;
+}
+
+message CreateTodoRequest {
+  string title = 1;
+  optional string description = 2;
+}
+
+message CreateTodoResponse {
+  todo.definition.Todo todo = 1;
+}
+
+message CompleteTodoRequest {
+  string id = 1;
+}
+
+message CompleteTodoResponse {
+  todo.definition.Todo todo = 1;
+}
+
+service TodoService {
+  rpc GetTodo(GetTodoRequest) returns (GetTodoResponse);
+  rpc GetTodos(stream GetTodoRequest) returns (stream GetTodoResponse);
+  rpc GetTodosByIds(GetTodosRequest) returns (stream GetTodoResponse);
+  rpc GetTodosThroughStream(stream GetTodoRequest) returns (GetTodosResponse);
+  rpc CreateTodo(CreateTodoRequest) returns (CreateTodoResponse);
+  rpc CompleteTodo(CompleteTodoRequest) returns (CompleteTodoResponse);
+}

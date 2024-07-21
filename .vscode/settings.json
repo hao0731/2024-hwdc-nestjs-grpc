@@ -1,0 +1,11 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "protoc": {
+    "options": [
+      "--proto_path=./libs/todo/domain/src/assets"
+    ]
+  }
+}

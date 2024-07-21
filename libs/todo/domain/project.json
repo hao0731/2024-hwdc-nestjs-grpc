@@ -1,0 +1,22 @@
+{
+  "name": "todo-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/todo/domain/src",
+  "projectType": "library",
+  "tags": ["type:domain", "scope:todo"],
+  "targets": {
+    "compile": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "libs/todo/domain/src",
+        "args": [
+          "--plugin=../../../node_modules/.bin/proto-gen-ts_proto",
+          "--proto_path=./assets",
+          "--ts_proto_out=./lib",
+          "--ts_proto_opt=nestJs=true,addGrpcMetadata=true,addNestjsRestParameter=true"
+        ],
+        "command": "protoc ./assets/todo_service.proto"
+      }
+    }
+  }
+}

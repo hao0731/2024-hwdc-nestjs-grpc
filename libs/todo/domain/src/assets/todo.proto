@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package todo.definition;
+
+message Todo {
+  string id = 1;
+  string title = 2;
+  bool completed = 3;
+  optional string description = 4;
+}
